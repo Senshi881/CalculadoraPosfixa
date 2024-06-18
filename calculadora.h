@@ -1,17 +1,12 @@
-#ifndef CALCULADORA_H
-#define CALCULADORA_H
-
-#define MAX_TAM 100
+#ifndef EXPRESSAO_H
+#define EXPRESSAO_H
 
 typedef struct {
-    double itens[MAX_TAM];
-    int topo;
-} Pilha;
+    char posFixa[512];   // Expressão na forma pos fixa, como 3 12 4 + *
+    char inFixa[512];    // Expressão na forma pos fixa, como 3 * (12 + 4)
+    float Valor;         // Valor numérico da expressão
+} Expressao;
 
-void inicializar(Pilha *s);
-int vazio(Pilha *s);
-int lotado(Pilha *s);
-void empilhar(Pilha *s, double valor);
-double desempilhar(Pilha *s);
-
+char *getFormaInFixa(char *Str);    // Retorna a forma inFixa de Str (posFixa)
+float getValor(char *Str);          // Calcula o valor de Str (na forma posFixa)
 #endif
